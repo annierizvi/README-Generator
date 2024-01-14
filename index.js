@@ -54,10 +54,21 @@ const questions = [
 ];
 
 // function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+}
 
 // function to initialize program
-function init() {}
+function init() {
+  inquirer.prompt(questions).then((answers) => {
+    console.log(answers);
+    const response = generateMarkdown(answers);
+    console.log(response);
+    fs.writeToFile('README.md', response, (err) =>
+      err ? console.error(err) : console.log('Success!')
+    );
+  });
+}
 
 // function call to initialize program
 init();

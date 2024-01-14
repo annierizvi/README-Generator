@@ -64,7 +64,7 @@ function init() {
     console.log(answers);
     const response = generateMarkdown(answers);
     console.log(response);
-    fs.writeToFile('README.md', response, (err) =>
+    writeToFile('README.md', response, (err) =>
       err ? console.error(err) : console.log('Success!')
     );
   });
